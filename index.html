@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--===== FAVICON ==============================-->
+  <link rel="icon" type="image/x-icon" href="#"> <!--=== add image ===-->
+  <!--===== REMIX ICONS ==========================-->
+  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+  <!--===== CSS ==================================-->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <!--===== DOC TITLE ============================-->
+  <title>Error 404 Page | t3Rminal_cmd</title>
+</head>
+
+<body>
+  <!--===== HEADER ===============================-->
+  <header class="header">
+    <nav class="nav container">
+      <a href="#" class="nav__logo">
+        <h1>Lo<span>g</span>o</h1>
+      </a>
+
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a href="javascript:history.back()" class="nav__link">Back</a>
+          </li>
+
+          <li class="nav__item">
+            <a href="#" class="nav__link">About</a>
+          </li>
+
+          <li class="nav__item">
+            <a href="mailto:example@example.com?subject=Hello&body=Just%20saying%20hello!" class="nav__link">Contact</a>
+          </li>
+        </ul>
+
+        <div class="nav__close" id="nav-close">
+          <i class='bx bx-x'></i>
+        </div>
+      </div>
+
+      <!-- toggle button -->
+      <div class="nav__toggle" id="nav-toggle">
+        <i class='bx bx-grid-alt'></i>
+      </div>
+    </nav>
+  </header>
+  <!--===== MAIN =================================-->
+  <main class="main">
+  <!--===== HOME =================================-->
+    <section class="home">
+      <div class="home__container container">
+        <div class="home__data">
+          <span class="home__subtitle"><em>Error 404</em></span>
+          <h1 class="home__title">ERROR</h1>
+          <p class="home__description">
+            <em>Cannot Find Page</em>
+          </p>
+          <a href="" class="home__button" onclick="goBack()">
+            Go Back
+          </a>
+        </div>
+
+        <div class="home__img">
+          <img src="assets/img/monster_bac.png" alt="error monster image">
+          <div class="home__shadow"></div>
+        </div>
+      </div>
+
+      <footer class="home__footer">
+        <span>some@companyName.com</span>
+      </footer>
+    </section>
+  </main>
+  
+  <!--===== SCROLL REVEAL ========================-->
+  <script src="assets/js/scrollreveal.min.js"></script>
+  <!--===== MAIN JS ==============================-->
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
