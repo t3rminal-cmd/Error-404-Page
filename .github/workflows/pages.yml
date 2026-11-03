@@ -1,5 +1,6 @@
 # Publishes the site to GitHub Pages on every push to main.
-# One-time setup: repo Settings -> Pages -> Build and deployment -> Source: "GitHub Actions".
+# Pages is switched on automatically on the first run (enablement: true below).
+# If that's ever refused: repo Settings -> Pages -> Build and deployment -> Source: "GitHub Actions".
 name: Deploy Site
 
 on:
@@ -41,6 +42,9 @@ jobs:
 
       - name: Set up Pages
         uses: actions/configure-pages@v5
+        with:
+          # Turns Pages on (source: GitHub Actions) if it isn't already.
+          enablement: true
 
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
