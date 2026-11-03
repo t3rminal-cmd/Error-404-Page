@@ -5,9 +5,10 @@ A friendly "page not found" page. A fuzzy teal monster stands in for the zero in
 **Live:** https://t3rminal-cmd.github.io/Error-404-Page/
 (Any missing address on the site shows it too, for example https://t3rminal-cmd.github.io/Error-404-Page/nothing-here)
 
-<p>
-  <img src="preview.jpg" width="640" alt="Amber 404 page with a teal monster as the zero">
-  <img src="preview-phone.jpg" width="180" alt="The same page on a phone">
+<p align="center">
+  <a href="https://t3rminal-cmd.github.io/Error-404-Page/nothing-here">
+    <img src="preview.jpg" width="100%" alt="The amber 404 page with a teal monster as the zero, shown in a browser window and on a phone">
+  </a>
 </p>
 
 ## Features
