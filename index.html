@@ -1,86 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--===== FAVICON ==============================-->
-  <link rel="icon" type="image/x-icon" href="#"> <!--=== add image ===-->
-  <!--===== REMIX ICONS ==========================-->
-  <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-  <!--===== CSS ==================================-->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found | t3rminal-cmd</title>
+  <meta name="description" content="Error 404: the page you were looking for could not be found.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#E89E1B">
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/BricolageGrotesque.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/styles.css">
-  <!--===== DOC TITLE ============================-->
-  <title>Error 404 Page | t3Rminal_cmd</title>
 </head>
-
 <body>
-  <!--===== HEADER ===============================-->
-  <header class="header">
-    <nav class="nav container">
-      <a href="#" class="nav__logo">
-        <h1>Lo<span>g</span>o</h1>
-      </a>
+  <a class="skip" href="#main">Skip to content</a>
 
-      <div class="nav__menu" id="nav-menu">
-        <ul class="nav__list">
-          <li class="nav__item">
-            <a href="javascript:history.back()" class="nav__link">Back</a>
-          </li>
-
-          <li class="nav__item">
-            <a href="#" class="nav__link">About</a>
-          </li>
-
-          <li class="nav__item">
-            <a href="mailto:example@example.com?subject=Hello&body=Just%20saying%20hello!" class="nav__link">Contact</a>
-          </li>
-        </ul>
-
-        <div class="nav__close" id="nav-close">
-          <i class='bx bx-x'></i>
-        </div>
-      </div>
-
-      <!-- toggle button -->
-      <div class="nav__toggle" id="nav-toggle">
-        <i class='bx bx-grid-alt'></i>
-      </div>
-    </nav>
+  <header class="site-header">
+    <a class="brand" href="https://t3rminal-cmd.github.io/Portfolio-Bootstrap/">
+      <span class="brand__prompt" aria-hidden="true">&gt;_</span> t3rminal-cmd
+    </a>
   </header>
-  <!--===== MAIN =================================-->
-  <main class="main">
-  <!--===== HOME =================================-->
-    <section class="home">
-      <div class="home__container container">
-        <div class="home__data">
-          <span class="home__subtitle"><em>Error 404</em></span>
-          <h1 class="home__title">ERROR</h1>
-          <p class="home__description">
-            <em>Cannot Find Page</em>
-          </p>
-          <a href="" class="home__button" onclick="goBack()">
-            Go Back
-          </a>
-        </div>
 
-        <div class="home__img">
-          <img src="assets/img/monster_bac.png" alt="error monster image">
-          <div class="home__shadow"></div>
-        </div>
-      </div>
+  <main id="main" class="lost">
+    <h1 class="code" aria-label="Error 404">
+      <span class="code__digit" aria-hidden="true">4</span>
+      <span class="code__zero" aria-hidden="true">
+        <img class="monster"
+             src="assets/img/monster.webp"
+             srcset="assets/img/monster-sm.webp 280w, assets/img/monster.webp 559w"
+             sizes="(min-width: 768px) 22rem, 46vw"
+             width="559" height="512"
+             alt="">
+        <span class="monster__shadow"></span>
+      </span>
+      <span class="code__digit" aria-hidden="true">4</span>
+    </h1>
 
-      <footer class="home__footer">
-        <span>some@companyName.com</span>
-      </footer>
-    </section>
+    <h2 class="lost__title">This page wandered off.</h2>
+    <p class="lost__text">
+      The link may be broken, or the page may have moved. Go back to where you were,
+      or start again from the home page.
+    </p>
+
+    <div class="actions">
+      <a class="btn btn--solid" href="https://t3rminal-cmd.github.io/Portfolio-Bootstrap/" data-go-back>Go back</a>
+      <a class="btn btn--line" href="https://t3rminal-cmd.github.io/Portfolio-Bootstrap/">Home page</a>
+    </div>
   </main>
-  
-  <!--===== SCROLL REVEAL ========================-->
-  <script src="assets/js/scrollreveal.min.js"></script>
-  <!--===== MAIN JS ==============================-->
-  <script src="assets/js/main.js"></script>
-</body>
 
+  <footer class="site-footer">
+    <p>Error 404. Built by <a href="https://github.com/t3rminal-cmd">t3rminal-cmd</a>.</p>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
 </html>

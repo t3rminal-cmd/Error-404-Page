@@ -1,0 +1,52 @@
+# Publishes the site to GitHub Pages on every push to main.
+# One-time setup: repo Settings -> Pages -> Build and deployment -> Source: "GitHub Actions".
+name: Deploy Site
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Don't cancel a deploy that's already running; queue the next one instead.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v4
+
+      # Publish only the website files, not repo housekeeping (.github, README, preview.png).
+      # 404.html is a copy of index.html with absolute asset paths, so GitHub Pages can show
+      # it for any missing address on the site, however deep the path.
+      - name: Collect site files
+        run: |
+          mkdir _site
+          cp -r index.html assets _site/
+          base="/${{ github.event.repository.name }}"
+          sed -e "s#\"assets/#\"$base/assets/#g" -e "s#, assets/#, $base/assets/#g" \
+              index.html > _site/404.html
+
+      - name: Set up Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

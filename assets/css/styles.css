@@ -1,335 +1,316 @@
-/*===== GOOGLE FONTS ============================*/
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+/* ==========================================================================
+   Error 404 page
+   Amber background, warm ink, and a monster standing in for the zero.
+   ========================================================================== */
 
-/*======= VARIABLES CSS =========================*/
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("../fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 200 800;
+  font-stretch: 75% 100%;
+  font-display: swap;
+}
+
 :root {
-  --header-height: 3.5rem;
+  --amber: #E89E1B;
+  --amber-deep: #D18712;
+  --ink: #2B1D0A;
+  --cream: #FFF3DA;
+  --teal: #1B7F8A;
+  --shadow: #5A3A0A;
 
-  /*=== COLOR SCHEME ============================*/
-  /*Color mode HSL(hue, sat, light)*/
-  --first-color: hsl(38, 80%, 50%);
-  --text-color: hsl(38, 8%, 8%);
+  --font: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
 
-  /*=== FONT AND TOPOGRAPHY =====================*/
-  /*.5rem = 8px | 1rem = 16px ...*/
-  --body-font: "Poppins", sans-serif;
-  --biggest-font-size: 2.375rem;
-  --normal-font-size: .938rem;
-  --smaller-font-size: .75rem;
+  /* Type scale (perfect fourth) */
+  --step-0: 1rem;
+  --step-1: 1.333rem;
+  --step-2: 1.777rem;
+  --code-size: clamp(8.5rem, 36vw, 21rem);
+
+  --gutter: clamp(1rem, 4vw, 2.5rem);
 }
 
-/*--===== Responsive typography ===============--*/
-@media screen and (min-width: 1024px) {
-  :root {
-    --biggest-font-size: 5rem;
-    --normal-font-size: 1rem;
-    --smaller-font-size: .813rem;
-  }
-}
-
-/*===== BASE ====================================*/
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  font-family: var(--body-font);
-  font-size: var(--normal-font-size);
-  font-weight: 500;
-  color: var(--text-color);
-}
-
-ul {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 42%, #F2AE33 0%, transparent 70%),
+    var(--amber);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: var(--step-0);
+  line-height: 1.55;
 }
 
 img {
+  display: block;
   max-width: 100%;
   height: auto;
 }
 
-/*===== REUSABLE CSS CLASSES ====================*/
-.container {
-  max-width: 1024px;
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
+a {
+  color: inherit;
 }
 
-.main {
-  overflow: hidden;
-  /* For the animations ScrollReveal */
+:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
-/*===== HEADER & NAV ============================*/
-.header {
-  position: fixed;
-  width: 100%;
-  background-color: transparent;
-  top: 0;
-  left: 0;
-  z-index: 100;
-}
-.header span {
-  color: #fff;
-}
-
-.nav {
-  height: var(--header-height);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* Skip link: hidden until a keyboard user tabs to it */
+.skip {
+  position: absolute;
+  left: var(--gutter);
+  top: -4rem;
+  padding: .5rem 1rem;
+  background: var(--ink);
+  color: var(--cream);
+  border-radius: 999px;
+  text-decoration: none;
+  z-index: 10;
 }
 
-.nav__logo,
-.nav__toggle {
-  color: var(--text-color);
+.skip:focus {
+  top: 1rem;
+}
+
+/* ---------- Header & footer ---------- */
+
+.site-header,
+.site-footer {
+  padding: 1.25rem var(--gutter);
+}
+
+.brand {
   display: inline-flex;
-}
-
-.nav__logo h1 {
+  align-items: baseline;
+  gap: .4rem;
   font-weight: 700;
+  font-size: var(--step-0);
+  text-decoration: none;
+  letter-spacing: -.01em;
 }
 
-.nav__toggle {
-  font-size: 1.25rem;
-  cursor: pointer;
+.brand__prompt {
+  font-weight: 800;
+  color: var(--cream);
+  background: var(--ink);
+  padding: .05rem .4rem;
+  border-radius: .35rem;
+  font-size: .85em;
 }
 
-@media screen and (max-width: 767px) {
-  .nav__menu {
-    position: fixed;
-    background-color: var(--first-color);
-    left: 0;
-    top: -100%;
-    width: 100%;
-    padding: 5rem 0 4rem;
-    border-radius: 0 0 1.5rem 1.5rem;
-    box-shadow: 0 2px 4px hsla(38, 4%, 15%, .15);
-    transition: .4s;
-  }
-}
-
-.nav__list {
+.site-footer {
   text-align: center;
+  font-size: .875rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer a {
+  font-weight: 700;
+  text-underline-offset: .2em;
+}
+
+.site-footer a:hover {
+  color: var(--teal);
+}
+
+/* ---------- Main message ---------- */
+
+.lost {
   display: flex;
   flex-direction: column;
-  row-gap: 2rem;
-}
-
-.nav__link {
-  color: var(--text-color);
-}
-
-.nav__close {
-  position: absolute;
-  top: 1rem;
-  right: 1.5rem;
-  font-size: 1.5rem;
-  color: var(--text-color);
-  cursor: pointer;
-}
-
-/* Show menu */
-.show-menu {
-  top: 0;
-}
-
-/*===== HOME ====================================*/
-.home {
-  background-color: var(--first-color);
-  padding: 9rem 0 2rem;
-  height: 100vh;
-  display: grid;
-}
-
-.home__container {
-  display: grid;
-  align-content: center;
-  row-gap: 2.5rem;
-}
-
-.home__data {
-  text-align: center;
-}
-
-.home__title {
-  font-size: var(--biggest-font-size);
-  margin: .75rem 0;
-  text-shadow: 2px 2px 4px #fff;
-}
-
-.home__button {
-  margin-top: 2rem;
-  display: inline-block;
-  background-color: var(--text-color);
-  color: #fff;
-  padding: .80rem 1.5rem;
-  border-radius: 3rem;
-  transition: .4s;
-}
-
-.home__button:hover {
-  box-shadow: 0 4px 12px hsla(38, 69%, 8%, .2);
-}
-
-.home__img img {
-  width: 330px;
-  animation: floaty 1.8s infinite alternate;
-}
-
-.home__img {
-  justify-self: center;
-}
-
-.home__shadow {
-  width: 200px;
-  height: 24px;
-  background-color: hsla(37, 22%, 19%, 0.849);
-  margin: 0 auto;
-  border-radius: 50%;
-  filter: blur(7px);
-  animation: shadow 1.8s infinite alternate;
-}
-
-.home__footer {
-  display: flex;
+  align-items: center;
   justify-content: center;
-  column-gap: .5rem;
-  font-size: var(--smaller-font-size);
-  align-self: flex-end;
+  text-align: center;
+  padding: 1rem var(--gutter) 3rem;
 }
 
-/* Animate logo */
-@keyframes floaty {
-  0% {
-    transform: translateY(0);
-  }
+/* The giant 404, with the monster as the zero */
+.code {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  font-size: var(--code-size);
+  font-weight: 800;
+  font-stretch: 75%;
+  line-height: .8;
+  letter-spacing: -.04em;
+}
 
-  100% {
-    transform: translateY(15px);
-  }
+.code__digit {
+  display: block;
+  /* Cut-out look: cream face, ink edge pushed down and right */
+  color: var(--cream);
+  text-shadow:
+    .025em .025em 0 var(--ink),
+    .045em .045em 0 var(--ink);
+}
+
+.code__zero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: .78em;
+  margin: 0 -.04em;
+  /* Lift the monster so its shadow sits on the digits' baseline */
+  transform: translateY(-.06em);
+}
+
+.monster {
+  width: 100%;
+  animation: float 2.2s ease-in-out infinite alternate;
+  filter: drop-shadow(0 .02em 0 rgba(43, 29, 10, .15));
+}
+
+.monster__shadow {
+  width: 62%;
+  height: .07em;
+  margin-top: .06em;
+  border-radius: 50%;
+  background: var(--shadow);
+  opacity: .55;
+  filter: blur(.02em);
+  animation: shadow 2.2s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  from { transform: translateY(0); }
+  to   { transform: translateY(.05em); }
 }
 
 @keyframes shadow {
-  0% {
-    transform: scale(1, 1);
+  from { transform: scaleX(.82); opacity: .4; }
+  to   { transform: scaleX(1);   opacity: .6; }
+}
+
+.lost__title {
+  margin: clamp(1.75rem, 5vw, 2.75rem) 0 .5rem;
+  font-size: var(--step-2);
+  font-weight: 750;
+  line-height: 1.15;
+  letter-spacing: -.02em;
+}
+
+.lost__text {
+  max-width: 34rem;
+  margin: 0 0 2rem;
+}
+
+/* ---------- Buttons ---------- */
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .75rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: .7rem 1.6rem;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+}
+
+.btn--solid {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.btn--line {
+  background: transparent;
+  color: var(--ink);
+}
+
+.btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.btn--solid:hover {
+  box-shadow: 4px 4px 0 var(--teal);
+}
+
+.btn--line:hover {
+  background: var(--cream);
+}
+
+.btn:active {
+  transform: translate(0, 0);
+  box-shadow: none;
+}
+
+/* ---------- Small phones ---------- */
+
+@media (max-width: 420px) {
+  .actions {
+    flex-direction: column;
+    align-self: stretch;
   }
 
-  100% {
-    transform: scale(.85, .85);
+  .btn {
+    width: 100%;
   }
 }
 
-/*===== TEXT ANIMATION =============================*/
-.home__title, 
-.home__img {
-  top: -200px;
-  transition: top 20s ease;
-}
+/* ---------- Short landscape screens ---------- */
 
-.home__title {
-  left: 100%;
-}
+@media (max-height: 560px) and (orientation: landscape) {
+  :root {
+    --code-size: clamp(6rem, 38vh, 12rem);
+  }
 
-@keyframes slideInTitle {
-  from { top: 12em; }
-  to { top: 6em; } 
-}
-
-@keyframes slideInImage {
-  from { top: -20em; }
-  to { top: 20em; } 
-}
-
-
-.home__title.animated {
-  animation: slideInTitle 4s ease forwards;
-}
-
-.home__img.animated {
-  animation: slideInImage 8s ease forwards;
-}
-
-/*===== BREAKPOINTS ================================*/
-/*--===== For small devices ======================--*/
-@media screen and (max-width: 375px) {
-  .home {
-    padding: 10px 0 10px 0;
+  .lost__title {
+    margin-top: 1rem;
   }
 }
 
-/*--===== For medium devices =====================--*/
-@media screen and (min-width: 768px) {
-  .nav {
-    height: calc(var(--header-height) + 1.5rem);
+/* ---------- Motion & print ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .monster,
+  .monster__shadow {
+    animation: none;
   }
 
-  .nav__toggle,
-  .nav__close {
+  .btn {
+    transition: none;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .actions,
+  .skip {
     display: none;
-  }
-
-  .nav__list {
-    flex-direction: row;
-    column-gap: 3.5rem;
-  }
-}
-
-.home__img img {
-  width: 350px;
-}
-
-/*--===== For large devices ======================--*/
-@media screen and (min-width: 1032px) {
-
-  .home__container {
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-    column-gap: 2rem;
-  }
-
-  .home__data {
-    text-align: initial;
-  }
-
-  .home__img img {
-    width: 400px;
-  }
-
-  .home__shadow {
-    width: 250px;
-    height: 40px;
-  }
-}
-
-@media screen and (min-width: 1048px) {
-  .container {
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-/*--===== For 2K resolutions (2048 x 1152, 2048 x 1536) ==--*/
-@media screen and (min-width: 2048px) {
-  body {
-    zoom: 1.7;
-  }
-
-  .home {
-    height: initial;
-    row-gap: 4rem;
-  }
-}
-
-/*--===== For 4K resolutions (3840 x 2160, 4096 x 2160) ==--*/
-@media screen and (min-width: 3840px) {
-  body {
-    zoom: 3.1;
   }
 }
